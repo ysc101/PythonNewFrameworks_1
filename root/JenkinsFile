@@ -1,19 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Clone Repository') {
             steps {
-                echo 'Building...'
+                checkout scm
             }
         }
-        stage('Test') {
+        stage('Run Python Script') {
             steps {
-                echo 'Testing...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                sh 'python3 GetUserDetails.py'
             }
         }
     }
